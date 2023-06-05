@@ -8,7 +8,7 @@ Things don't sit still when they're left alone. They gather dust, decay, change,
 **Delete** gets rid of files that are past the time period of necessity. If you haven't touched it in 10 years, did you really need it?
 
 
-Made during the [The Boston Stupid Shit No One Needs & Terrible Ideas Hackathon](https://bostonstupidhackathon.com/). Not to actually be used. Instead
+Made during the [The Boston Stupid Shit No One Needs & Terrible Ideas Hackathon](https://bostonstupidhackathon.com/). Not to actually be used.
 ## *Use these scripts responsibly and at your own risk.*
 
 
