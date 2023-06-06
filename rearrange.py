@@ -19,13 +19,16 @@ seconds = args.seconds
 days = args.days
 weeks = args.weeks
 
-total_seconds = 604800 # default to one week
+total_seconds = 0
 if seconds:
     total_seconds += seconds
 if days:
     total_seconds += days * 24 * 60 * 60
 if weeks:
     total_seconds += weeks * 7 * 24 * 60 * 60
+
+if total_seconds == 0:
+    total_seconds = 604800 # default to one week
 
 directory = args.directory
 
@@ -57,6 +60,7 @@ def is_subdirectory(path, directory):
     return path.startswith(directory + os.path.sep)
 
 def move_random_folder():
+    print("moving?")
     current_time = time.time()
     # Collect the folders that have not been accessed in given time frame
     folders_to_move = []
@@ -66,6 +70,8 @@ def move_random_folder():
         for dir in dirs:
             folder_path = os.path.join(root, dir)
 
+            print("possible", folder_path)
+
             # Get the access time of the folder in seconds
             access_time = os.path.getatime(folder_path)
 
@@ -73,8 +79,11 @@ def move_random_folder():
             time_difference = current_time - access_time
 
             # Check if the folder has not been accessed in a week (7 days = 604800 seconds)
+            print(time_difference, total_seconds)
             if time_difference > total_seconds:
                 folders_to_move.append(folder_path)
+
+    print("folders", folders_to_move)
 
     # Check if any folders were found that have not been accessed in a week
     if folders_to_move:
@@ -101,6 +110,7 @@ def move_random_folder():
             # Log the move information
             log_message = f"Moved: {folder_to_move} --> {destination_path}"
             logging.info(log_message)
+            print(log_message)
 
     #     else:
     #         print("Inception. Skipping move operation.")

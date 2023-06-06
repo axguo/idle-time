@@ -18,13 +18,16 @@ seconds = args.seconds
 days = args.days
 weeks = args.weeks
 
-total_seconds = 604800 # default to one week
+total_seconds = 0
 if seconds:
     total_seconds += seconds
 if days:
     total_seconds += days * 24 * 60 * 60
 if weeks:
     total_seconds += weeks * 7 * 24 * 60 * 60
+
+if total_seconds == 0:
+    total_seconds = 604800 # default to one week
 
 directory = args.directory
 
